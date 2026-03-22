@@ -1,6 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
 import { getAboutPage } from '@/lib/cosmic';
 
 export const revalidate = 60;
@@ -74,12 +73,11 @@ export default async function AboutPage() {
       {/* Hero Image */}
       {heroImage && (heroImage.imgix_url || heroImage.url) && (
         <div className="relative w-full aspect-[21/9] rounded-xl overflow-hidden mb-12">
-          <Image
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
             src={heroImage.imgix_url || heroImage.url}
             alt={heading}
-            fill
-            className="object-cover"
-            priority
+            className="w-full h-full object-cover"
           />
         </div>
       )}
@@ -99,7 +97,7 @@ export default async function AboutPage() {
         <section className="pb-16">
           <h2 className="text-2xl font-bold text-gray-900 mb-8">Meet the Team</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {teamMembers.map((member) => {
+            {teamMembers.map((member: { id: string; slug: string; title: string; metadata?: { avatar?: { imgix_url?: string; url?: string }; bio?: string } }) => {
               const avatar = member.metadata?.avatar;
               const avatarUrl = avatar?.imgix_url || avatar?.url;
 
@@ -110,12 +108,12 @@ export default async function AboutPage() {
                   className="group flex flex-col items-center text-center p-6 bg-gray-50 rounded-xl hover:bg-brand-50 transition-colors border border-gray-100 hover:border-brand-100"
                 >
                   {avatarUrl ? (
-                    <div className="relative w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-gray-100 group-hover:ring-brand-200 transition-all">
-                      <Image
+                    <div className="w-24 h-24 rounded-full overflow-hidden mb-4 ring-2 ring-gray-100 group-hover:ring-brand-200 transition-all">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
                         src={avatarUrl}
                         alt={member.title}
-                        fill
-                        className="object-cover"
+                        className="w-full h-full object-cover"
                       />
                     </div>
                   ) : (
