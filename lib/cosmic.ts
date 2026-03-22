@@ -198,7 +198,7 @@ export async function getAboutPage(): Promise<AboutPage | null> {
       .depth(2);
 
     const pages = response.objects as AboutPage[];
-    return pages.length > 0 ? pages[0] : null;
+    return pages.length > 0 ? pages[0] ?? null : null;
   } catch (error) {
     if (hasStatus(error) && error.status === 404) {
       return null;
