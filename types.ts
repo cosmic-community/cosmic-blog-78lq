@@ -44,6 +44,21 @@ export interface Category extends CosmicObject {
   };
 }
 
+// About Page
+export interface AboutPage extends CosmicObject {
+  type: 'about-pages';
+  metadata: {
+    heading?: string;
+    subheading?: string;
+    hero_image?: {
+      url: string;
+      imgix_url: string;
+    };
+    content?: string;
+    team_members?: Author[];
+  };
+}
+
 // API response types
 export interface CosmicResponse<T> {
   objects: T[];

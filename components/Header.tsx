@@ -22,6 +22,12 @@ export default function Header() {
               Home
             </Link>
             <Link
+              href="/about"
+              className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              About
+            </Link>
+            <Link
               href="/authors"
               className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
             >
@@ -42,6 +48,12 @@ export default function Header() {
               className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
             >
               Home
+            </Link>
+            <Link
+              href="/about"
+              className="text-sm font-medium text-gray-600 hover:text-gray-900 transition-colors"
+            >
+              About
             </Link>
             <Link
               href="/authors"
